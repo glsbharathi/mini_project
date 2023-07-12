@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaint Management System</title>
+<link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Complaint Management System</h1>
+
+        {% if logged_in %}
+            <h2>Welcome, {{ session.username }}!</h2>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <h2>Please login to view and resolve complaints</h2>
+            <a href="/login">Login</a>
+        {% endif %}
+
+        <h2>Submit a Complaint</h2>
+        <form action="/submit" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="complaint">Complaint:</label>
+            <textarea id="complaint" name="complaint" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+
+    </div>
+</body>
+</html>
+

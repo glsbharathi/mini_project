@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resolve Complaint</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Resolve Complaint</h1>
+    <h2>Complaint Details:</h2>
+    <p>Name: {{ complaint[1] }}</p>
+    <p>Complaint: {{ complaint[2] }}</p>
+    <br>
+    <h2>Provide Solution:</h2>
+    <form action="/resolve/{{ complaint[0] }}" method="POST">
+        <label for="solution">Solution:</label><br>
+        <textarea id="solution" name="solution" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Resolve">
+    </form>
+    <br>
+    <a href="/admin">Back to Admin Dashboard</a>
+</div>
+</body>
+</html>
+

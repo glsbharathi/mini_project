@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, Admin</h1>
+        <h2>Complaints:</h2>
+        {% if complaints %}
+            <ul>
+                {% for complaint in complaints %}
+                    <li>
+                        <strong>{{ complaint[1] }}</strong>
+                        <p>{{ complaint[2] }}</p>
+                        <p>Time of Complaint: {{ complaint[3] }}</p>
+                        {% if complaint[4] %}
+                            <p>Resolved: Yes</p>
+                            <p>Solution: {{ complaint[5] }}</p>
+                            {% if complaint[6] %}
+                                <p>Time of Resolution: {{ complaint[6] }}</p>
+                            {% else %}
+                                <p>Time of Resolution: Not available</p>
+                            {% endif %}
+                        {% else %}
+                            <p>Resolved: No</p>
+                            <a href="/resolve/{{ complaint[0] }}">Resolve</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No complaints found.</p>
+        {% endif %}
+<a href="{{ url_for('logout') }}" class="button">Logout</a>
+    </div>
+</body>
+</html>
+
